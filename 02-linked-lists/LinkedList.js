@@ -4,7 +4,7 @@ class SinglyLinkedList {
     this.next = null;
   }
 
-  appendToTail(data) {
+  append(data) {
     const newNode = new SinglyLinkedList(data);
     let n = this;
     while (n.next !== null) {
@@ -42,7 +42,7 @@ class DoublyLinkedList extends SinglyLinkedList {
     this.prev = null;
   }
 
-  appendToTail(data) {
+  append(data) {
     const newNode = new DoublyLinkedList(data);
     let n = this;
     while (n.next !== null) {

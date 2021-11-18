@@ -1,11 +1,11 @@
-import { SinglyLinkedList, DoublyLinkedList } from './Node.js';
+import { SinglyLinkedList, DoublyLinkedList } from './LinkedList.js';
 
 const list1 = new SinglyLinkedList(1);
-list1.appendToTail(5);
-list1.appendToTail(2);
-list1.appendToTail(13);
-list1.appendToTail(5);
-list1.appendToTail(3);
+list1.append(5);
+list1.append(2);
+list1.append(13);
+list1.append(5);
+list1.append(3);
 
 function returnKthToLast(node, k) {
   let listLength = 1;
