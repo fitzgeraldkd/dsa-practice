@@ -1,20 +1,20 @@
 import { Tree } from './Tree.js';
 import { SinglyLinkedList } from '../02-linked-lists/LinkedList.js';
 
-function listOfDepths(tree) {
-  // const depth = 0;
-  // const lists = {};
-  return addToList(tree, {}, 0);
-}
+// function listOfDepths(tree) {
+//   // const depth = 0;
+//   // const lists = {};
+//   return addToList(tree, {}, 0);
+// }
 
-function addToList(tree, lists, depth) {
+function listOfDepths(tree, lists={}, depth=0) {
   if (depth in lists) {
     lists[depth].append(tree.value)
   } else {
     lists[depth] = new SinglyLinkedList(tree.value);
   }
   for (const child of tree.children) {
-    addToList(child, lists, depth+1);
+    listOfDepths(child, lists, depth+1);
   }
   return lists
 }
