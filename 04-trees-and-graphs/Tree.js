@@ -19,4 +19,5 @@ class Tree {
   }
 }
 
-export { Tree };
+// export { Tree };
+module.exports = Tree;
