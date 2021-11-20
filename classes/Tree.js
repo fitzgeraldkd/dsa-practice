@@ -95,64 +95,15 @@ class Tree {
     return { isBinarySearch, min, max };
   }
 
-  testIsBinarySearch(tree = this, min = null, max = null) {
-    return this.testCheckBinarySearchChild(tree).isBinarySearch;
-
-
-    // ~~~~~~~~~~~~~~~~~~~~~~
-
-    if (tree === this && !this.testIsBinary()) return false;
-
-    if (tree.children.length === 2) {
-      {
-        const node = tree.children[0];
-        if (node.value > tree.value) return false;
-        if (!this.testIsBinarySearch(node, min, tree.value)) return false;
-      }
-      {
-        const node = tree.children[1];
-        if (node.value < tree.value) return false;
-        if (!this.testIsBinarySearch(node, tree.value, max)) return false;
-      }
-      // if (tree.children[0].value > tree.value) return false;
-      // if (!this.testIsBinarySearch(tree.children[0])) return false;
-    }
-    if (tree.children.length === 1) {
-      if (!this.testIsBinarySearch(tree.children[0], min, max)) return false;
-    }
-    // tree.children.forEach((node, index) => {
-    //   // if (index === 0) {
-    //   //   if (node.value > tree.value) return false;
-
-    //   // }
-    //   if (index === 0 && node.value > tree.value) return false;
-    //   if (index === 1 && node.value < tree.value) return false;
-    //   if (!this.testIsBinarySearch(node, min, max)) return false;
-    // });
-    return true;
-    const queue = [this];
-    while (queue.length > 0) {
-      const node = queue.shift();
-      if (node.children.length < 2) continue;
-      if (node.children[0].value > node.value && node.children[1] < node.value) {
-        return false
-      }
-    }
-    return true;
+  testIsBinarySearch() {
+    if (!this.testIsBinary()) return false;
+    return this.testCheckBinarySearchChild(this).isBinarySearch;
   }
 
-  // testIsBinarySearch() {
-  //   if (!this.testIsBinary()) return false;
-  //   const queue = [this];
-  //   while (queue.length > 0) {
-  //     const node = queue.shift();
-  //     if (node.children.length < 2) continue;
-  //     if (node.children[0].value > node.value && node.children[1] < node.value) {
-  //       return false
-  //     }
-  //   }
-  //   return true;
-  // }
+  testIsCompleteBinary() {
+    
+  }
+
 }
 
 // export { Tree };

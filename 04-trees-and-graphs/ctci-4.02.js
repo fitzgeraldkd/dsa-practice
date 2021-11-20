@@ -1,5 +1,5 @@
 // import { Tree } from '../classes/Tree.js';
-const { Tree} = require('../classes/Tree.js');
+const { Tree } = require('../classes/Tree.js');
 
 function minimalTree(nums) {
   const numOfLevels = Math.ceil(Math.log(nums.length + 1) / Math.log(2));
