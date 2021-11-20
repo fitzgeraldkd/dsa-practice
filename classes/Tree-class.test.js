@@ -1,4 +1,9 @@
-const { Tree } = require('../classes/Tree.js');
+const { Tree, BinaryTree } = require('../classes/Tree.js');
+
+const testBT = new BinaryTree(1);
+testBT.left = new BinaryTree(0);
+// console.log(testBT.left, testBT.right);
+// console.log(testBT);
 
 const case1 = new Tree(1);
 const case2 = new Tree(1, [new Tree(0)]);
@@ -19,34 +24,60 @@ const case4 = new Tree(8, [
   ])
 ]);
 
+const binaryTest = new BinaryTree(8, [
+  new BinaryTree(4, [
+    new BinaryTree(2), new BinaryTree(12)
+  ]),
+  new BinaryTree(10, [
+    undefined, new BinaryTree(20)
+  ])
+]);
+console.log(binaryTest.testIsBinarySearch());
+
 const testCases = [
   {
     name: 'Case 1:',
     tree: case1,
     isValid: true,
     isBinary: true,
-    isBinarySearch: true
+    isBinarySearch: true,
+    isComplete: true,
+    isBinarySearchComplete: true,
+    isFull: true,
+    isPerfect: true
   },
   {
     name: 'Case 2:',
     tree: case2,
     isValid: true,
     isBinary: true,
-    isBinarySearch: true
+    isBinarySearch: true,
+    isCompleteBinary: true,
+    isBinarySearchComplete: true,
+    isFullBinary: false,
+    isPerfectBinary: false
   },
   {
     name: 'Case 3:',
     tree: case3,
     isValid: true,
     isBinary: true,
-    isBinarySearch: true
+    isBinarySearch: true,
+    isCompleteBinary: true,
+    isBinarySearchComplete: false,
+    isFullBinary: false,
+    isPerfectBinary: false
   },
   {
     name: 'Case 4:',
     tree: case4,
     isValid: true,
     isBinary: true,
-    isBinarySearch: false
+    isBinarySearch: false,
+    isCompleteBinary: true,
+    isBinarySearchComplete: false,
+    isFullBinary: false,
+    isPerfectBinary: false
   }
 ]
 

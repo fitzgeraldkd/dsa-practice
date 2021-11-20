@@ -1,8 +1,8 @@
-function commonComparison(baseline, values, allowEqual=false) {
+function commonComparison(baseline, values, comps=['<', '>']) {
   return (
-    values.every(value => value > baseline) ||
-    values.every(value => value < baseline) ||
-    (allowEqual && values.every(value => value === baseline))
+    (comps.includes('>') && values.every(value => value > baseline)) ||
+    (comps.includes('<') && values.every(value => value < baseline)) ||
+    (comps.includes('===') && values.every(value => value === baseline))
   );
 }
 

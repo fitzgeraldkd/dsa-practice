@@ -5,7 +5,7 @@ class Tree {
     this.value = value;
     this.allowDuplicates = allowDuplicates;
     this.children = children.map(child => {
-      child.allowDuplicates = allowDuplicates;
+      if (child) child.allowDuplicates = allowDuplicates;
       return child;
     });
   }
@@ -91,7 +91,7 @@ class Tree {
     } else if (child.children.length === 0) {
       [isBinarySearch, min, max] = [true, child.value, child.value]
     }
-    console.log({ isBinarySearch, min, max })
+    // console.log({ isBinarySearch, min, max })
     return { isBinarySearch, min, max };
   }
 
@@ -101,10 +101,66 @@ class Tree {
   }
 
   testIsCompleteBinary() {
-    
+
   }
 
 }
 
+class BinaryTree extends Tree {
+  constructor(value, children=[], allowDuplicates=true) {
+    if (children.length > 2) throw `BinaryTree cannot have more than 2 children (${children.length} passed).`;
+    while (children.length < 2) children.push(undefined);
+    super(value, children, allowDuplicates);
+  }
+
+  append(tree) {
+    const openIndex = this.children.findIndex(child => child === undefined);
+    if (openIndex === -1) throw 'Cannot append to a BinaryTree that already has two children.';
+    this.children[openIndex] = tree;
+  }
+
+  get left() {
+    return this.children[0];
+  }
+
+  get right() {
+    return this.children[1];
+  }
+
+  set left(tree) {
+    tree.allowDuplicates = this.allowDuplicates;
+    this.children[0] = tree;
+  }
+
+  set right(tree) {
+    tree.allowDuplicates = this.allowDuplicates;
+    this.children[1] = tree;
+  }
+
+  testCheckBinarySearchChild(child) {
+    let [isBinarySearch, min, max] = [true, child.value, child.value];
+    child.children.forEach((grandchild, index) => {
+      if (grandchild === undefined) return;
+      const grandchildData = this.testCheckBinarySearchChild(grandchild);
+      isBinarySearch = (
+        isBinarySearch && 
+        grandchildData.isBinarySearch &&
+        commonComparison(child.value,
+          [grandchildData.min, grandchildData.max],
+          index === 0 ? ['<'] : ['>']
+        )
+      );
+      min = Math.min(grandchildData.min, child.value, min);
+      max = Math.max(grandchildData.max, child.value, max);
+    });
+    console.log({ isBinarySearch, min, max })
+    return { isBinarySearch, min, max };
+  }
+
+  testIsBinarySearch() {
+    return this.testCheckBinarySearchChild(this).isBinarySearch;
+  }
+}
+
 // export { Tree };
-module.exports = { Tree };
+module.exports = { Tree, BinaryTree };
