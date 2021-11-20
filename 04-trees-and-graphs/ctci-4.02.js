@@ -1,4 +1,5 @@
-import { Tree } from './Tree.js';
+// import { Tree } from '../classes/Tree.js';
+const { Tree} = require('../classes/Tree.js');
 
 function minimalTree(nums) {
   const numOfLevels = Math.ceil(Math.log(nums.length + 1) / Math.log(2));
@@ -13,10 +14,12 @@ function minimalTree(nums) {
   return new Tree(nums[middleIndex], children);
 }
 
-minimalTree([...Array(3).keys()]).print();
-minimalTree([...Array(7).keys()]).print();
-minimalTree([...Array(15).keys()]).print();
+// minimalTree([...Array(3).keys()]).print();
+// minimalTree([...Array(7).keys()]).print();
+// minimalTree([...Array(15).keys()]).print();
 
-minimalTree([...Array(1).keys()]).print();
-minimalTree([...Array(12).keys()]).print();
-minimalTree([...Array(50).keys()]).print();
+// minimalTree([...Array(1).keys()]).print();
+// minimalTree([...Array(12).keys()]).print();
+// minimalTree([...Array(50).keys()]).print();
+
+module.exports = { minimalTree }

@@ -1,4 +1,4 @@
-import { Tree } from './Tree.js';
+import { Tree } from '../classes/Tree.js';
 import { SinglyLinkedList } from '../02-linked-lists/LinkedList.js';
 
 function listOfDepths(tree, lists={}, depth=0) {

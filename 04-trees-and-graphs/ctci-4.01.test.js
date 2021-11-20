@@ -1,8 +1,5 @@
-// import { Tree } from './Tree.js';
-// import { Graph, Node} from './Graph.js';
-// import { routeBetweenNodes } from './ctci-4.01.js';
-const Tree = require('./Tree.js');
-const { Graph, Node } = require('./Graph.js')
+const { Tree } = require('../classes/Tree.js');
+const { Graph, Node } = require('../classes/Graph.js')
 const { routeBetweenNodes } = require('./ctci-4.01.js')
 
 const case1node0 = new Node(0);
