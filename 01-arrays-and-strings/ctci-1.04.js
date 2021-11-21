@@ -1,4 +1,4 @@
-function palindromePerm(str) {
+function palindromePermutation(str) {
   const chars = {};
   for (let i=0; i<str.length; i++) {
     str[i] in chars ? chars[str[i]]++ : chars[str[i]] = 1;
@@ -17,8 +17,4 @@ function palindromePerm(str) {
   return true;
 }
 
-console.log(palindromePerm(''));
-console.log(palindromePerm('taco         cat'));
-console.log(palindromePerm('racerac'));
-console.log(palindromePerm('testing'));
-console.log(palindromePerm(' '));
+module.exports = { palindromePermutation };
