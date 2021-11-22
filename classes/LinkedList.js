@@ -32,7 +32,8 @@ class SinglyLinkedList {
       n = n.next;
       results += separator + n.data;
     }
-    console.log(results);
+    // console.log(results);
+    return results;
   }
 }
 
@@ -62,8 +63,10 @@ class DoublyLinkedList extends SinglyLinkedList {
   }
 
   print() {
-    super.print(' <-> ');
-    if (!this.validate()) console.log('Invalid list.')
+    let results = super.print(' <-> ');
+    // if (!this.validate()) console.log('Invalid list.')
+    if (!this.validate()) results = 'Invalid list: ' + results;
+    return results;
   }
 
   validate() {
@@ -81,15 +84,24 @@ class DoublyLinkedList extends SinglyLinkedList {
       if (n === this) break;
     }
 
-    // console.log(forward);
-    // console.log(backward);
+    const logLists = () => {
+      console.error(forward);
+      console.error(backward);
+    };
 
-    if (forward.length !== backward.length) return false;
+    if (forward.length !== backward.length) {
+      logLists();
+      return false;
+    }
     for (let i = 0; i < forward.length; i++) {
-      if (forward[i] !== backward[i]) return false;
+      if (forward[i] !== backward[i]) {
+        logLists();
+        return false;
+      }
     }
     return true;
   }
 }
 
-export { SinglyLinkedList, DoublyLinkedList };
+// export { SinglyLinkedList, DoublyLinkedList };
+module.exports = { SinglyLinkedList, DoublyLinkedList };
