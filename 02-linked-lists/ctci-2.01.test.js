@@ -9,7 +9,7 @@ const testCases = [
 const listTypes = [
   {classRef: SinglyLinkedList, desc: 'Remove duplicates from a singly linked list'},
   {classRef: DoublyLinkedList, desc: 'Remove duplicates from a doubly linked list'}
-]
+];
 
 describe('Remove duplicates from an unsorted linked list', () => {
   testCases.forEach(testCase => {

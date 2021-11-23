@@ -1,13 +1,14 @@
-import { SinglyLinkedList, DoublyLinkedList } from './LinkedList.js';
-
-const list1 = new SinglyLinkedList(1);
-list1.append(5);
-list1.append(2);
-list1.append(13);
-list1.append(5);
-list1.append(3);
-
 function returnKthToLast(node, k) {
+  /*
+  Time: O(n)
+  Space: O(1)
+
+  Where:
+    n = number of nodes in the linked list
+  
+  Notes:
+    Return the last element when k=0
+  */
   let listLength = 1;
   let n = node
   while (n.next !== null) {
@@ -22,4 +23,4 @@ function returnKthToLast(node, k) {
   return node;
 }
 
-console.log(returnKthToLast(list1, 5));
+module.exports = { returnKthToLast };

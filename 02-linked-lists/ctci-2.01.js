@@ -1,20 +1,40 @@
-function removeDups(tree, values = {}) {
-  if (tree === null || tree.next === null) return tree;
-  values[tree.data] = true;
-  if (values[tree.next.data]) {
-    if (tree.constructor.name === 'DoublyLinkedList' && tree.next.next !== null) {
-      tree.next.next.prev = tree;
+function removeDups(list, values = {}) {
+  /*
+  Time: O(n)
+  Space: O(n)
+
+  Where:
+    n = number of nodes in linked list
+  
+  Notes:
+    Uses additional data structure to optimize time
+  */
+  if (list === null || list.next === null) return list;
+  values[list.data] = true;
+  if (values[list.next.data]) {
+    if (list.constructor.name === 'DoublyLinkedList' && list.next.next !== null) {
+      list.next.next.prev = list;
     }
-    tree.next = tree.next.next === null ? null : tree.next.next;
-    removeDups(tree, values);
+    list.next = list.next.next === null ? null : list.next.next;
+    removeDups(list, values);
   } else {
-    removeDups(tree.next, values);
+    removeDups(list.next, values);
   }
-  return tree;
+  return list;
 }
 
 function removeDupsNoDS(leftPointer) {
-  const tree = leftPointer;
+  /* 
+  Time: O(n^2)
+  Space: O(1)
+
+  Where:
+    n = number of nodes in linked list
+  
+    Notes:
+      Does not use additional data structures
+  */
+  const list = leftPointer;
   while (leftPointer !== null) {
     let rightPointer = leftPointer;
     while (rightPointer.next !== null) {
@@ -30,7 +50,7 @@ function removeDupsNoDS(leftPointer) {
     }
     leftPointer = leftPointer.next;
   }
-  return tree;
+  return list;
 }
 
 module.exports = { removeDups, removeDupsNoDS };

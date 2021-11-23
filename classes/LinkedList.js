@@ -1,3 +1,9 @@
+class LinkedList {
+  constructor(root) {
+    this.root = root;
+  }
+}
+
 class SinglyLinkedList {
   constructor(data) {
     this.data = data;
@@ -104,4 +110,4 @@ class DoublyLinkedList extends SinglyLinkedList {
 }
 
 // export { SinglyLinkedList, DoublyLinkedList };
-module.exports = { SinglyLinkedList, DoublyLinkedList };
+module.exports = { LinkedList, SinglyLinkedList, DoublyLinkedList };
