@@ -1,64 +1,31 @@
-import { Tree } from '../classes/Tree.js';
-import { SinglyLinkedList } from '../02-linked-lists/LinkedList.js';
+const { SinglyLinkedList } = require('../classes/LinkedList.js');
 
-function listOfDepths(tree, lists={}, depth=0) {
-  if (depth in lists) {
-    lists[depth].append(tree.value)
-  } else {
-    lists[depth] = new SinglyLinkedList(tree.value);
-  }
-  for (const child of tree.children) {
-    listOfDepths(child, lists, depth+1);
-  }
-  return lists
+function listOfDepths(tree) {
+  const makeList = (nodes) => {
+    // nodes is an array of all nodes for a single depth
+    // return an array of all linked lists made so far
+    // if nodes have children, create another nodes array and recursively call makeList
+    const children = [];
+    let allLists;
+    let thisList;
+    for (const node of nodes) {
+      if (node.left) children.push(node.left);
+      if (node.right) children.push(node.right);
+      if (thisList) {
+        thisList.append(node.value);
+      } else {
+        thisList = new SinglyLinkedList(node.value);
+      }
+    }
+    if (children.length > 0) {
+      allLists = [thisList, ...makeList(children)];
+    } else {
+      allLists = [thisList];
+    }
+    return allLists;
+  };
+  const depthLists = makeList([tree]);
+  return depthLists;
 }
 
-const completeBinaryTree = new Tree(10, [
-  new Tree(5, [
-    new Tree(3),
-    new Tree(7)
-  ]),
-  new Tree(20, [
-    new Tree(15)
-  ])
-]);
-
-const fullBinaryTree = new Tree(10, [
-  new Tree(5),
-  new Tree(20, [
-    new Tree(3, [
-      new Tree(9),
-      new Tree(18)
-    ]),
-    new Tree(7)
-  ])
-]);
-
-const perfectBinaryTree = new Tree(10, [
-  new Tree(5, [
-    new Tree(9),
-    new Tree(18)
-  ]),
-  new Tree(20, [
-    new Tree(3),
-    new Tree(7)
-  ])
-]);
-
-completeBinaryTree.print();
-fullBinaryTree.print();
-perfectBinaryTree.print();
-
-console.log(listOfDepths(completeBinaryTree));
-
-Object.values(listOfDepths(completeBinaryTree)).forEach(list => {
-  list.print();
-});
-
-Object.values(listOfDepths(fullBinaryTree)).forEach(list => {
-  list.print();
-});
-
-Object.values(listOfDepths(perfectBinaryTree)).forEach(list => {
-  list.print();
-});
+module.exports = { listOfDepths };
