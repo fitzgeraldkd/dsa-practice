@@ -13,7 +13,7 @@ class Stack {
   pop() {
     const poppedItem = this.top.value;
     this.top = this.top.next;
-    return poppedItem
+    return poppedItem;
   }
 
   push(item) {
@@ -31,4 +31,4 @@ class Stack {
   }
 }
 
-module.exports = { Stack }
+module.exports = { Stack };
