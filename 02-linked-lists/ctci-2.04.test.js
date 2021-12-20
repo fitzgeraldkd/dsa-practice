@@ -16,7 +16,7 @@ describe('Partition the list where all elements less than x are on the left', ()
         });
         const valueToPartitionBy = 5;
         const listToPartition = new LinkedList(rootToPartition);
-        console.log(rootToPartition.print())
+        // console.log(rootToPartition.print())
         partition(listToPartition, valueToPartitionBy);
         let nodeToCheck = listToPartition.root;
         let smallerValuesOnLeft = true;
@@ -36,7 +36,7 @@ describe('Partition the list where all elements less than x are on the left', ()
         });
         const valueToPartitionBy = 3;
         const listToPartition = new LinkedList(rootToPartition);
-        console.log(rootToPartition.print())
+        // console.log(rootToPartition.print())
         partition(listToPartition, valueToPartitionBy);
         let nodeToCheck = listToPartition.root;
         let smallerValuesOnLeft = true;

@@ -77,35 +77,16 @@ class DoublyLinkedList extends SinglyLinkedList {
 
   validate() {
     let n = this;
-    const forward = [n.data];
+    let valid = true;
     while (n.next !== null) {
-      n = n.next;
-      forward.push(n.data);
-    }
-
-    const backward = [n.data];
-    while (n.prev !== null) {
-      n = n.prev
-      backward.unshift(n.data);
-      if (n === this) break;
-    }
-
-    const logLists = () => {
-      console.error(forward);
-      console.error(backward);
-    };
-
-    if (forward.length !== backward.length) {
-      logLists();
-      return false;
-    }
-    for (let i = 0; i < forward.length; i++) {
-      if (forward[i] !== backward[i]) {
-        logLists();
-        return false;
+      if (n.next === this) {
+        valid &&= this.prev === n;
+        break;
       }
+      valid &&= n.next.prev === n;
+      n = n.next;
     }
-    return true;
+    return valid;
   }
 }
 
