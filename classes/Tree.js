@@ -159,7 +159,7 @@ class BinaryTree extends Tree {
         max = Math.max(grandchildData.max, child.value, max);
       });
 
-      console.log({ isBinarySearch, min, max })
+      // console.log({ isBinarySearch, min, max })
       return { isBinarySearch, min, max };
     }
     return checkBinarySearchChild(this).isBinarySearch;

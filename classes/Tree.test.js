@@ -32,7 +32,7 @@ const binaryTest = new BinaryTree(8, [
     undefined, new BinaryTree(20)
   ])
 ]);
-console.log(binaryTest.testIsBinarySearch());
+// console.log(binaryTest.testIsBinarySearch());
 
 const testCases = [
   {
