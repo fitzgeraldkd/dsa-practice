@@ -62,8 +62,21 @@ function quickSort(arr) {
   sort(arr, 0, arr.length - 1);
 }
 
+function bubbleSort(arr) {
+  let changed = false;
+  do {
+    changed = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i+1]) {
+        changed = true;
+        [arr[i], arr[i+1]] = [arr[i+1], arr[i]];
+      }
+    }
+  } while (changed);
+}
+
 function bucketSort(arr) {
 
 }
 
-module.exports = { mergeSort, quickSort, bucketSort };
+module.exports = { mergeSort, quickSort, bucketSort, bubbleSort };
