@@ -77,8 +77,18 @@ function bubbleSort(arr) {
   }
 }
 
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      minIndex = (arr[j] < arr[minIndex]) ? j : minIndex;
+    }
+    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+  }
+}
+
 function bucketSort(arr) {
 
 }
 
-module.exports = { mergeSort, quickSort, bucketSort, bubbleSort };
+module.exports = { mergeSort, quickSort, bucketSort, bubbleSort, selectionSort };

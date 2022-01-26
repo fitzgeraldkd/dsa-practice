@@ -1,10 +1,11 @@
-const { mergeSort, quickSort, bucketSort, bubbleSort } = require('./sortingAlgorithms.js');
+const { mergeSort, quickSort, bucketSort, bubbleSort, selectionSort } = require('./sortingAlgorithms.js');
 
 const sortingAlgorithms = [
   {functionRef: mergeSort, desc: 'Merge Sort'},
   {functionRef: quickSort, desc: 'Quick Sort'},
   {functionRef: bubbleSort, desc: 'Bubble Sort'},
   // {functionRef: bucketSort, desc: 'Bucket Sort'},
+  {functionRef: selectionSort, desc: 'Selection Sort'},
 ]
 
 describe('Test sorting algorithms', () => {
